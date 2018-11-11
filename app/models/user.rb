@@ -8,7 +8,8 @@ class User < ApplicationRecord
   validates :company_email, presence: true,
                             uniqueness: true,
                             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates :contact_email, uniqueness: true,
+  validates :contact_email, allow_blank: true,
+                            uniqueness: true,
                             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :status, presence: true
 

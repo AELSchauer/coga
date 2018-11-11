@@ -1,6 +1,6 @@
 class Role < ApplicationRecord
   belongs_to :user
-  belongs_to :roleable, polymporphic: true, as: :organization
+  belongs_to :roleable, polymorphic: true, optional: true
 
   validates :type, presence: true
 

@@ -28,12 +28,13 @@ gem 'puma', '~> 3.0'
 group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'guard-rspec'
   gem 'launchy'
   gem 'pry'
   gem 'rspec-rails'
+  gem 'rubocop-rspec'
   gem 'shoulda-matchers'
 end
 
