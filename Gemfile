@@ -26,8 +26,15 @@ gem 'puma', '~> 3.0'
 # gem 'rack-cors'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_bot'
+  gem 'faker'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -36,3 +43,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Issue with version '1.9.25' so overwrite with lower version
+gem 'ffi', '1.9.18'
