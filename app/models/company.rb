@@ -6,5 +6,5 @@ class Company < ApplicationRecord
 
   validates :name, presence: true
   validates :email_domain, presence: true
-  validates :url, presence: true
+  # validates :url, presence: true
 end

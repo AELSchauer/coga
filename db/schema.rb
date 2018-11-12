@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20181111235646) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.integer  "type"
+    t.integer  "name"
     t.string   "roleable_type"
     t.integer  "roleable_id"
     t.datetime "created_at",    null: false
@@ -100,15 +100,17 @@ ActiveRecord::Schema.define(version: 20181111235646) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.string   "company_email"
+    t.string   "primary_email"
     t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "contact_email"
-    t.integer  "status",          default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.index ["company_email"], name: "index_users_on_company_email", using: :btree
+    t.integer  "status",             default: 0
+    t.string   "confirmation_token"
+    t.boolean  "email_confirmed",    default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", using: :btree
+    t.index ["primary_email"], name: "index_users_on_primary_email", using: :btree
     t.index ["username"], name: "index_users_on_username", using: :btree
   end
 

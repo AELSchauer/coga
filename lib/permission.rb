@@ -21,16 +21,13 @@ private
   def user_permissions
     return true if controller == "sessions"
     return true if controller == "tokens"
+    return true if controller == "users"
     return false
   end
 
   def guest_permissions
     return true if controller == "sessions"
-    return false
-  end
-
-  def guest_permissions
-    return true if controller == "sessions"
+    return true if controller == "users"
     return false
   end
 end

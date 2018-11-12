@@ -3,7 +3,7 @@ class Role < ApplicationRecord
   has_many :users, through: :user_roles
   belongs_to :roleable, polymorphic: true, optional: true
 
-  validates :type, presence: true
+  validates :name, presence: true
 
-  enum type: [ :employee, :coordinator, :administrator ]
+  enum name: [ :employee, :coordinator, :administrator ]
 end
