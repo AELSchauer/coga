@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
+
   has_many :user_roles
   has_many :roles, through: :user_roles
 
@@ -15,4 +17,12 @@ class User < ApplicationRecord
   validates :status, presence: true
 
   enum status: [ :active, :inactive ]
+
+  def login_attributes
+    self.attributes.symbolize_keys.keep_if {|k,v| [:username, :company_email, :id].include? k }
+  end
+
+  def token
+    JsonWebToken.encode(login_attributes)
+  end
 end
