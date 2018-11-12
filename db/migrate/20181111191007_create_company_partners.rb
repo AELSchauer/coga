@@ -4,7 +4,7 @@ class CreateCompanyPartners < ActiveRecord::Migration[5.0]
       t.references :company, foreign_key: true
       t.references :partner, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
