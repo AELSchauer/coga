@@ -19,6 +19,14 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def four_oh_four(message)
+    render status: 404, json: { message: message }
+  end
+
+  def five_hundred(message)
+    render status: 500, json: { message: message }
+  end
+
   private
 
   def auth_token
