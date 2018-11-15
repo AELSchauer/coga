@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       post "/refresh", to: "user/tokens#create"
       post "/confirm", to: "user/confirmations#create"
 
-      resource :users, only: [:create]
+      resources :users, only: [:index, :create]
     end
   end
 end

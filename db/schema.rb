@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181111235646) do
+ActiveRecord::Schema.define(version: 20181114050443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,16 @@ ActiveRecord::Schema.define(version: 20181111235646) do
     t.index ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
   end
 
+  create_table "tokens", force: :cascade do |t|
+    t.integer  "name"
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_tokens_on_token", using: :btree
+    t.index ["user_id"], name: "index_tokens_on_user_id", using: :btree
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "role_id"
@@ -104,12 +114,9 @@ ActiveRecord::Schema.define(version: 20181111235646) do
     t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "status",             default: 0
-    t.string   "confirmation_token"
-    t.boolean  "email_confirmed",    default: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", using: :btree
+    t.integer  "status",          default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["primary_email"], name: "index_users_on_primary_email", using: :btree
     t.index ["username"], name: "index_users_on_username", using: :btree
   end
@@ -131,6 +138,7 @@ ActiveRecord::Schema.define(version: 20181111235646) do
   add_foreign_key "social_profiles", "social_networks"
   add_foreign_key "subscriptions", "partners"
   add_foreign_key "subscriptions", "users"
+  add_foreign_key "tokens", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "volunteers", "events"

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :tokens
   has_many :user_roles
   has_many :roles, through: :user_roles
 
@@ -16,7 +17,7 @@ class User < ApplicationRecord
   enum status: [ :active, :inactive ]
 
   after_create do
-    add_token(:confrimation)
+    create_token(:confirmation)
   end
 
   def login_attributes
@@ -27,7 +28,7 @@ class User < ApplicationRecord
     attributes.symbolize_keys.reject! {|k,v| [:confirmation_token, :password_digest].include? k }
   end
 
-  def jwt_token
+  def json_web_token
     JsonWebToken.encode(login_attributes)
   end
 

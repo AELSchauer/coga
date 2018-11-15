@@ -13,7 +13,7 @@ class Permission
     when user.id
       user_permissions
     else
-     guest_permissions
+      guest_permissions
     end
   end
 

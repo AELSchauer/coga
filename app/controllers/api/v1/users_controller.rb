@@ -2,6 +2,7 @@ class Api::V1::UsersController < ApplicationController
   before_action :authorize!
 
   def index
+    binding.pry
     if authorized?
       render status: 200, json: User.all
     else
