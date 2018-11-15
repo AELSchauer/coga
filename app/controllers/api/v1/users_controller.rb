@@ -1,6 +1,14 @@
 class Api::V1::UsersController < ApplicationController
   before_action :authorize!
 
+  def index
+    if authorized?
+      render status: 200, json: User.all
+    else
+      four_oh_four
+    end
+  end
+
   def create
     if current_user
       # Organization coordinator or admin is creating a new user

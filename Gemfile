@@ -26,6 +26,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'rack-cors'
 
 gem 'jwt'
+gem 'rspec_api_documentation'
+gem "apitome"
 
 group :development, :test do
   gem 'capybara'

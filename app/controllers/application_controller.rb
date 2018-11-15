@@ -1,4 +1,6 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+
   def current_user
     id = data[:id] || session[:user_id]
     @current_user ||= User.find(id) if id
@@ -19,7 +21,7 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def four_oh_four(message)
+  def four_oh_four(message="Not authorized")
     render status: 404, json: { message: message }
   end
 
