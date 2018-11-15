@@ -4,7 +4,7 @@ class Api::V1::SessionsController < ApplicationController
            User.find_by(username: session_params[:username])
     if user && user.authenticate(session_params[:password])
       session[:user_id] = user.id
-      render status: 200, json: user.login_attributes.merge({ token: user.token })
+      render status: 200, json: user.login_attributes.merge({ token: user.jwt_token })
     else
       render status: 404, json: { message: "Login credentials invalid" }
     end

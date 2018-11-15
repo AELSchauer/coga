@@ -15,17 +15,19 @@ class User < ApplicationRecord
 
   enum status: [ :active, :inactive ]
 
-  before_create
+  after_create do
+    add_token(:confrimation)
+  end
 
   def login_attributes
-    self.attributes.symbolize_keys.keep_if {|k,v| [:username, :primary_email, :id].include? k }
+    attributes.symbolize_keys.keep_if {|k,v| [:username, :primary_email, :id].include? k }
   end
 
   def response_attributes
-    self.attributes.symbolize_keys.reject! {|k,v| [:confirmation_token, :password_digest].include? k }
+    attributes.symbolize_keys.reject! {|k,v| [:confirmation_token, :password_digest].include? k }
   end
 
-  def token
+  def jwt_token
     JsonWebToken.encode(login_attributes)
   end
 
@@ -35,5 +37,21 @@ class User < ApplicationRecord
 
   def employee_email?
     Company.pluck(:email_domain).sort.include? email_domain
+  end
+
+  def create_token(name)
+    self.tokens.create(name: name)
+  end
+
+  def destroy_token(name)
+    self.tokens.find_by(name: name).destroy
+  end
+
+  def confirmed?
+    !self.tokens.find_by(name: :confirmation)
+  end
+
+  def locked?
+    !!self.tokens.find_by(name: :unlock)
   end
 end

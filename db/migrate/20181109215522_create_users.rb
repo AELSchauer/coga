@@ -8,9 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.integer :status, default: 0
 
-      t.string :confirmation_token, index: true
-      t.boolean :confirmed, default: false
-
       t.timestamps null: false
     end
   end
