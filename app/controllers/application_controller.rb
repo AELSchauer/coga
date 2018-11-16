@@ -22,11 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def four_oh_four(message="Not authorized")
-    render status: 404, json: { message: message }
+    render status: 404, json: { data: { message: message } }
   end
 
   def five_hundred(message)
-    render status: 500, json: { message: message }
+    render status: 500, json: { data: { message: message } }
   end
 
   private

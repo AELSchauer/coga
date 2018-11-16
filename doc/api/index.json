@@ -1,5 +1,17 @@
 {
   "resources": [
-
+    {
+      "name": "Users",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Employee signup",
+          "link": "users/employee_signup.json",
+          "groups": "all",
+          "route": "/api/v1/users",
+          "method": "post"
+        }
+      ]
+    }
   ]
 }

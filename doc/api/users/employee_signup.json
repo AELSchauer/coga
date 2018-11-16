@@ -1,0 +1,76 @@
+{
+  "resource": "Users",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/users",
+  "description": "Employee signup",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "data[user]",
+      "with_example": true,
+      "required": true,
+      "name": "username",
+      "description": "Data[user] username"
+    },
+    {
+      "scope": "data[user]",
+      "with_example": true,
+      "required": true,
+      "name": "primary_email",
+      "description": "Data[user] primary email"
+    },
+    {
+      "scope": "data[user]",
+      "with_example": true,
+      "required": false,
+      "name": "secondary_email",
+      "description": "Data[user] secondary email"
+    },
+    {
+      "scope": "data[user]",
+      "with_example": true,
+      "required": true,
+      "name": "first_name",
+      "description": "Data[user] first name"
+    },
+    {
+      "scope": "data[user]",
+      "with_example": true,
+      "required": true,
+      "name": "last_name",
+      "description": "Data[user] last name"
+    },
+    {
+      "scope": "data[user]",
+      "with_example": true,
+      "required": true,
+      "name": "password",
+      "description": "Data[user] password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/users",
+      "request_body": "{\"data\":{\"user\":{\"first_name\":\"Harrison\",\"last_name\":\"Breitenberg\",\"username\":\"HarrisonBreitenberg\",\"primary_email\":\"harrison.breitenberg@company.com\",\"password\":\"password\"}}}",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\n  \"data\": {\n    \"id\": 7,\n    \"username\": \"HarrisonBreitenberg\",\n    \"primary_email\": \"harrison.breitenberg@company.com\",\n    \"first_name\": \"Harrison\",\n    \"last_name\": \"Breitenberg\",\n    \"status\": \"active\",\n    \"created_at\": \"2018-11-16T00:51:39.099Z\",\n    \"updated_at\": \"2018-11-16T00:51:39.099Z\"\n  }\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

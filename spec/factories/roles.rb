@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :role do
-    type { 'employee' }
+    name { 'employee' }
     roleable { nil }
   end
 end
