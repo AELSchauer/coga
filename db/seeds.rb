@@ -12,7 +12,7 @@ user = User.find_or_initialize_by(
   primary_email: 'aelschauer@boc.com',
   username: 'aelschauer',
 )
-user.password_digest = 'password'
+user.password = 'password'
 user.save
 
 company = Company.find_or_create_by(

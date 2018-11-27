@@ -20,6 +20,15 @@ class User < ApplicationRecord
     create_token(:confirmation)
   end
 
+  def authenticate?(password)
+    begin
+      authenticate(password)
+      return true
+    rescue BCrypt::Errors::InvalidHash
+      return false
+    end
+  end
+
   def login_attributes
     attributes.symbolize_keys.keep_if {|k,v| [:username, :primary_email, :id].include? k }
   end

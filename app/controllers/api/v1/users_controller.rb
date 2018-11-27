@@ -36,7 +36,7 @@ class Api::V1::UsersController < ApplicationController
     #   end
     # else
       # Employee is signing up with company email address
-      @user = User.new(user_params)
+      @user = ::User.new(user_params)
       if !@user.valid?
         render status: 400, json: { data: @user.errors.full_datas }
       elsif !@user.employee_email?
