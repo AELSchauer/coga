@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: coga-rails_production
-  username: coga-rails
-  password: <%= ENV['COGA-RAILS_DATABASE_PASSWORD'] %>
+  database: coga-rails-production
+  username: coga_rails
+  password:  <%= ENV['COGA_RAILS_DATABASE_PASSWORD'] %>
+  host: <%= ENV['COGA_RAILS_DATABASE_HOST'] %>
+  port: <%= ENV['COGA_RAILS_DATABASE_PORT'] %>
