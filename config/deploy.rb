@@ -5,7 +5,7 @@ set :application, "api"
 set :repo_url, "git@github.com:AELSchauer/coga-rails.git"
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+ask :branch, "master"
 
 # Default deploy_to directory is /var/www/coga
 set :deploy_to, "/var/www/coga/api"
