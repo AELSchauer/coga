@@ -1,14 +1,14 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
-set :application, "coga-rails"
+set :application, "api"
 set :repo_url, "git@github.com:AELSchauer/coga-rails.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Default deploy_to directory is /var/www/coga-rails
-# set :deploy_to, "/var/www/coga-rails"
+# Default deploy_to directory is /var/www/coga
+set :deploy_to, "/var/www/coga/api"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh

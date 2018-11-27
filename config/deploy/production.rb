@@ -60,9 +60,9 @@
 #     # password: "please use keys"
 #   }
 
-role :app, %w{coga-rails_production@3.17.23.214}
-role :web, %w{coga-rails_production@3.17.23.214}
-role :db,  %w{coga-rails_production@3.17.23.214}
+role :app, %w{ubuntu@3.17.27.109}
+role :web, %w{ubuntu@3.17.27.109}
+role :db,  %w{ubuntu@3.17.27.109}
 set :ssh_options, {
   keys: '/Users/ashleyschauer/.ssh/AWS.pem',
   forward_agent: false,

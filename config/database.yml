@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: coga-rails_development
+  database: coga_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: coga-rails_test
+  database: coga_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,8 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: coga-rails-production
-  username: coga_rails
-  password:  <%= ENV['COGA_RAILS_DATABASE_PASSWORD'] %>
+  database: coga-production
+  username: <%= ENV['COGA_RAILS_DATABASE_USERNAME'] %>
+  password: <%= ENV['COGA_RAILS_DATABASE_PASSWORD'] %>
   host: <%= ENV['COGA_RAILS_DATABASE_HOST'] %>
   port: <%= ENV['COGA_RAILS_DATABASE_PORT'] %>
